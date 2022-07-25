@@ -7,9 +7,16 @@ def main():
 
     args = parse_args()
     cookie = extract_cookie()
-    appointment_markup = get_appointment_markup(cookie,args["startdate"],args["enddate"])
+    appointment_markup = get_appointment_markup(
+        cookie, args["startdate"], args["enddate"]
+    )
     if appointment_available(appointment_markup):
-        print("ich schicke ne benachrichtigung")
+        telegram_send_text(
+            "Termin verfügbar: https://termin.bremen.de/termine/select2?md=5",
+            args["telegramtoken"],
+            args["telegramchatid"],
+        )
+
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -18,7 +25,8 @@ def parse_args():
     parser.add_argument("--telegramtoken", required=True)
     parser.add_argument("--telegramchatid", required=True)
     return vars(parser.parse_args())
-    
+
+
 def extract_cookie():
     url = "https://termin.bremen.de/termine/select2?md=5"
     session = requests.Session()
@@ -26,7 +34,7 @@ def extract_cookie():
     return session.cookies.get_dict()["TVWebSession"]
 
 
-def get_appointment_markup(cookie,startdate,enddate):
+def get_appointment_markup(cookie, startdate, enddate):
     url = f"https://termin.bremen.de/termine/suggest?loc=535&mdt=0&cnc-7022=1&filter_date_from={startdate}&filter_date_to={enddate}&suggest_filter=Filtern"
     headers = CaseInsensitiveDict()
     headers["Cookie"] = f"TVWebSession={cookie}"
@@ -37,14 +45,13 @@ def get_appointment_markup(cookie,startdate,enddate):
 def appointment_available(appointment_markup):
     return "Kein freier Termin verfügbar" not in appointment_markup
 
-def telegram_bot_send_text(message):
-    bot_token = get_credentials("telegram")["bot_token"]
-    bot_chatID = get_credentials("telegram")["bot_chat_id"]
+
+def telegram_send_text(message, token, chat_id):
     send_text = (
         "https://api.telegram.org/bot"
-        + bot_token
+        + token
         + "/sendMessage?chat_id="
-        + bot_chatID
+        + chat_id
         + "&parse_mode=Markdown&text="
         + message
     )
