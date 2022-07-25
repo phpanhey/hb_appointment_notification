@@ -7,10 +7,6 @@ def main():
     appointment_markup = get_appointment_markup(cookie)
     if appointment_available(appointment_markup):
         print("ich schicke ne benachrichtigung")
-    else: 
-        print("kein Termin")
-
-
 
 def extract_cookie():
     url = "https://termin.bremen.de/termine/select2?md=5"
