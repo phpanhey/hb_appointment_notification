@@ -12,7 +12,7 @@ def main():
     )
     if appointment_available(appointment_markup):
         telegram_send_text(
-            "Termin verfügbar: https://termin.bremen.de/termine/select2?md=5",
+            "🤖 Termin verfügbar: https://termin.bremen.de/termine/select2?md=5",
             args["telegramtoken"],
             args["telegramchatid"],
         )
