@@ -43,7 +43,7 @@ def get_appointment_markup(cookie, startdate, enddate):
 
 
 def appointment_available(appointment_markup):
-    return "Kein freier Termin verfügbar" not in appointment_markup
+    return 'id="sugg_accordion"' in appointment_markup
 
 
 def telegram_send_text(message, token, chat_id):
