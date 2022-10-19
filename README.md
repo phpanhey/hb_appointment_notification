@@ -1,5 +1,5 @@
-#  🤖🤖🤖hb appointment notification 🤖🐍
-You are willing to book an appointment at 'BürgerServiceCenter-Mitte' but there's no appointment at all? All you want is to apply for a new passport. There's a simple fix.
+#  🤖🤖 hb appointment notification 🤖🐍
+You are willing to book an appointment at 'BürgerServiceCenter-Mitte' but there's no appointment at all ? All you want is to apply for a new passport. There's a simple fix.
 ***hb appointment notification*** notifies you when there's a free appointment. Just use the script periodically e.g. crontab.
  ## usage
  ```bash
