@@ -1,6 +1,6 @@
 #  🤖🤖 hb appointment notification 🤖🐍
 You are willing to book an appointment at 'BürgerServiceCenter-Mitte' but there's no appointment at all ? All you want is to apply for a new passport. There's a simple fix.
-***hb appointment notification*** notifies you when there's a free appointment. Just use the script periodically e.g. crontab.
+***hb appointment notification*** notifies you when there's a free appointment. Just use the script periodically e.g. crontab. you will be notified via telegram.
  ## usage
  ```bash
  python3 hb_appointment_notification.py --loc_nr {loc_nr} --cnc_nr {cnc_nr} --startdate 01.01.22 --enddate 31.12.30 --telegramtoken {telegramtoken} --telegramchatid {telegramchatid}
