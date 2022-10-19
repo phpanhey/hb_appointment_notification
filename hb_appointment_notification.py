@@ -37,8 +37,7 @@ def extract_cookie():
 
 
 def get_appointment_markup(cookie, loc_nr, cnc_nr, startdate, enddate):
-    url = f"https://termin.bremen.de/termine/suggest?loc={loc_nr}&mdt=0&cnc-{cnc_nr}=1&filter_date_from={startdate}&filter_date_to={enddate}&suggest_filter=Filtern"
-    print(url)
+    url = f"https://termin.bremen.de/termine/suggest?loc={loc_nr}&mdt=0&cnc-{cnc_nr}=1&filter_date_from={startdate}&filter_date_to={enddate}&suggest_filter=Filtern"    
     headers = CaseInsensitiveDict()
     headers["Cookie"] = f"TVWebSession={cookie}"
     resp = requests.get(url, headers=headers)
